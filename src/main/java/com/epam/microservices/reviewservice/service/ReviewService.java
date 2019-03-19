@@ -5,6 +5,8 @@ import com.epam.microservices.reviewservice.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,5 +38,21 @@ public class ReviewService {
 	}
 	public Iterable<Review> getAllReviews() {
 		return reviewRepository.findAll();
+	}
+	public Iterable<Review> retrieveReviews(Long productId) {
+		return reviewRepository.findByProductId(productId);
+	}
+
+	public List<Review> saveorUpdateReviewForGivenProductId(Long productId, List<Review> reviews) {
+		List<Review> savedReviews = new ArrayList<>();
+		for(Review review : reviews) {
+			Review savedReview = reviewRepository.save(review);
+			savedReviews.add(savedReview);
+		}
+		return savedReviews;
+	}
+
+	public void deleteReviewForGivenProductId(Long id) {
+		reviewRepository.deleteById(id);
 	}
 }

@@ -49,7 +49,7 @@ public class ReviewServiceTest {
 	}
 
 	private Review retriveReviewMockData() {
-		return new Review(30001L,"Sitaram","Good Quality");
+		return new Review(30001L,20001L,"Sitaram","Good Quality",3);
 	}
 
 }

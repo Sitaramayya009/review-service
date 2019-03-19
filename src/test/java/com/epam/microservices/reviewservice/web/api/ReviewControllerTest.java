@@ -61,7 +61,7 @@ public class ReviewControllerTest {
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
-		String expected = "[{\"id\":30001,\"name\":\"Sitaram\",\"desc\":\"Good Quality\"}]";
+		String expected = "[{\"id\":30001,\"productId\":20001,\"name\":\"Sitaram\",\"desc\":\"Good Quality\",\"rating\":3}]";
 		System.out.println(result.getResponse().getContentAsString());
 
 		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
@@ -138,6 +138,6 @@ public class ReviewControllerTest {
 	}
 
 	private Review retriveReviewMockData() {
-		return new Review(30001L,"Sitaram","Good Quality");
+		return new Review(30001L,20001L,"Sitaram","Good Quality",3);
 	}
 }
